@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main id="main">
+      <nav>
+        <div class="topbar">
+          <div class="brand" style="color: #fff">Productivity Dashboard</div>
+          <div class="glass-toggle" id="themeToggle">
+            <span class="dot" id="themeDot"></span>
+            <span id="themeLabel" class="heading"></span>
+          </div>
+        </div>
+      </nav>
+      <!-- Time & Weather -->
+      <div class="info-card">
+        <div>
+          <div class="info-date" id="dateOut">—</div>
+          <div class="info-time" id="timeOut">—:—:—</div>
+          <div class="info-loc" id="locOut">Bihar,Gopalganj (Teknivas)</div>
+        </div>
+        <div class="divider"></div>
+        <div>
+          <div class="info-temp" id="tempOut">—°C</div>
+          <div class="info-cond" id="condOut">Loading weather…</div>
+          <div class="info-details" id="detailOut"></div>
+        </div>
+      </div>
+
+      <!-- dusre chujhe -->
+      <div class="dock" id="dock">
+        <div class="dock-item todoicon" data-panel="todo">
+          <span class="dock-label">Todo List</span>
+          <div class="led" id="ledTodo"></div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M9 11l3 3L22 4" />
+            <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+          </svg>
+        </div>
+        <div class="dock-item plannericon" data-panel="planner">
+          <span class="dock-label">Daily Planner</span>
+          <div class="led" id="ledPlanner"></div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <path d="M16 2v4M8 2v4M3 10h18" />
+          </svg>
+        </div>
+        <div class="dock-item goalIcon" data-panel="goals">
+          <span class="dock-label">Daily Goals</span>
+          <div class="led" id="ledGoals"></div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="12" cy="12" r="5" />
+            <circle cx="12" cy="12" r="1" />
+          </svg>
+        </div>
+        <div class="dock-item" data-panel="pomodoro">
+          <span class="dock-label">Pomodoro Timer</span>
+          <div class="led" id="ledPomo"></div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="13" r="8" />
+            <path d="M12 9v4l3 2M9 2h6" />
+          </svg>
+        </div>
+        <div class="dock-item" data-panel="quote">
+          <span class="dock-label">Motivation Quote</span>
+          <div class="led" id="ledQuote"></div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <!-- TODO-->
+      <div class="overlay todopannel" id="overlay-todo">
+        <div class="modal">
+          <div class="modal-head">
+            <h2>Todo List</h2>
+            <button class="close-btn" data-close>✕</button>
+          </div>
+          <div class="row">
+            <form id="todoForm">
+              <input
+                type="text"
+                id="todoInput"
+                placeholder="Add a task and press Enter…"
+              />
+              <button class="btn" id="todoAddBtn">Add</button>
+            </form>
+          </div>
+          <ul class="tasklist" id="todoList"></ul>
+        </div>
+      </div>
+
+      <!-- PLANNER-->
+      <div class="overlay plannerPannel" id="overlay-planner">
+        <div class="modal">
+          <div class="modal-head">
+            <h2>Daily Planner</h2>
+            <button class="close-btn close-btn-planner" data-close>✕</button>
+          </div>
+          <div class="plan-list" id="plannerList"></div>
+        </div>
+      </div>
+      <!-- GOALS OVERLAY -->
+      <div class="overlay goalPannel" id="overlay-goals">
+        <div class="modal">
+          <div class="modal-head">
+            <h2>Daily Goals</h2>
+            <button class="close-btn closeGoal" data-close>✕</button>
+          </div>
+          <form id="Goal">
+            <input
+              type="text"
+              id="goalInput"
+              placeholder="Add a goal for today…"
+            />
+            <button class="btn" id="goalAddBtn">Add</button>
+            </form>
+            <ul class="tasklist" id="goalList" style="margin-top: 16px"></ul>
+          </div>
+          
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="script.js"></script>
+</html>
