@@ -117,7 +117,7 @@ let todoData = JSON.parse(localStorage.getItem("todoData")) || [];
 function todoUi() {
   todoList.innerHTML = "";
   todoData.forEach((elem, idx) => {
-    console.log(elem, idx);
+    console.log(idx);
     todoList.innerHTML += `
         <li class="task-item">
     <label>
@@ -216,7 +216,7 @@ function GoalUi() {
         <span class="task-text" style="${elem.done ? "text-decoration:line-through; opacity:.5;" : ""}">${elem.Goal}</span>
     </label>
     <div class="task-actions">
-        <button class="delete-btn" onClick="deleteTodo(${idx})">🗑️</button>
+        <button class="delete-btn" onClick="deleteGoal(${idx})">🗑️</button>
     </div>
 </li>
      `;
@@ -241,7 +241,7 @@ Goal.addEventListener("submit", (elem) => {
   Goal.reset();
   GoalUi();
 });
-function deleteTodo(idx) {
+function deleteGoal(idx) {
   GoalData.splice(idx, 1);
   localStorage.setItem("Goals", JSON.stringify(GoalData));
   GoalUi();
@@ -251,3 +251,74 @@ function toggleGoal(idx) {
   localStorage.setItem("Goals", JSON.stringify(GoalData));
   GoalUi();
 }
+
+let PomoIcon = document.querySelector(".PomoIcon");
+let pomoPannel = document.querySelector(".pomoPannel");
+let pomoCancel = document.querySelector(".pomoCancel");
+
+PomoIcon.addEventListener("click", () => {
+  pomoPannel.classList.toggle("active");
+});
+pomoCancel.addEventListener("click", () => {
+  pomoPannel.classList.toggle("active");
+});
+
+const WORK_TIME = 25 * 60;
+const BREAK_TIME = 5 * 60;
+
+let timeLeft = WORK_TIME;
+let isWorking = true;
+let timerId = null;
+let isRunning = false;
+
+const clockEl = document.querySelector("#pomoClock");
+const sessionEl = document.querySelector("#pomoSession");
+const startBtn = document.querySelector("#pomoStart");
+const pauseBtn = document.querySelector("#pomoPause");
+const resetBtn = document.querySelector("#pomoReset");
+const overlay = document.querySelector("#overlay-pomodoro");
+
+function updateDisplay() {
+  const minutes = String(Math.floor(timeLeft / 60)).padStart(2, "0");
+  const seconds = String(timeLeft % 60).padStart(2, "0");
+  clockEl.textContent = `${minutes}:${seconds}`;
+  sessionEl.textContent = isWorking ? "Work Session" : "Break Time";
+}
+
+function tick() {
+  if (timeLeft > 0) {
+    timeLeft--;
+    updateDisplay();
+  } else {
+    isWorking = !isWorking;
+    timeLeft = isWorking ? WORK_TIME : BREAK_TIME;
+    updateDisplay();
+  }
+}
+
+startBtn.addEventListener("click", () => {
+  if (isRunning) return;
+  isRunning = true;
+  timerId = setInterval(tick, 1000);
+});
+
+pauseBtn.addEventListener("click", () => {
+  clearInterval(timerId);
+  isRunning = false;
+});
+
+resetBtn.addEventListener("click", () => {
+  clearInterval(timerId);
+  isRunning = false;
+  isWorking = true;
+  timeLeft = WORK_TIME;
+  updateDisplay();
+});
+updateDisplay();
+
+async function h() {
+  const res = await fetch("https://api.quotable.io/random");
+  Data = res.json;
+  console.log(Data);
+}
+h();

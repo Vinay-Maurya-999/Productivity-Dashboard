@@ -77,7 +77,7 @@
             <circle cx="12" cy="12" r="1" />
           </svg>
         </div>
-        <div class="dock-item" data-panel="pomodoro">
+        <div class="dock-item PomoIcon" data-panel="pomodoro">
           <span class="dock-label">Pomodoro Timer</span>
           <div class="led" id="ledPomo"></div>
           <svg
@@ -108,7 +108,7 @@
         </div>
       </div>
 
-      <!-- TODO-->
+      <!--TODO-->
       <div class="overlay todopannel" id="overlay-todo">
         <div class="modal">
           <div class="modal-head">
@@ -129,7 +129,7 @@
         </div>
       </div>
 
-      <!-- PLANNER-->
+      <!-- PLANNER          -->
       <div class="overlay plannerPannel" id="overlay-planner">
         <div class="modal">
           <div class="modal-head">
@@ -139,7 +139,7 @@
           <div class="plan-list" id="plannerList"></div>
         </div>
       </div>
-      <!-- GOALS OVERLAY -->
+      <!--GOALS OVERLAY -->
       <div class="overlay goalPannel" id="overlay-goals">
         <div class="modal">
           <div class="modal-head">
@@ -156,10 +156,54 @@
             </form>
             <ul class="tasklist" id="goalList" style="margin-top: 16px"></ul>
           </div>
-          
         </div>
       </div>
-    </main>
+       
+      <!-- POMODORO-->
+    <div class="overlay pomoPannel" id="overlay-pomodoro">
+      <div class="modal">
+        <div class="modal-head">
+          <h2>Pomodoro Timer</h2>
+          <button class="close-btn pomoCancel" data-close>✕</button>
+        </div>
+        <div class="pomo-wrap" style="    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;">
+          <div class="pomo-session" id="pomoSession">Work Session</div>
+          <div style="    font-size: 3rem;
+    font-weight: 400;
+" class="pomo-clock" id="pomoClock">25:00</div>
+          <div class="pomo-controls">
+            <button class="btn" id="pomoStart">Start</button>
+            <button class="btn ghost" id="pomoPause">Pause</button>
+            <button class="btn ghost" id="pomoReset">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     
+    <!-- QUOTE OVERLAY -->
+    <div class="overlay QUOTE" id="overlay-quote">
+      <div class="modal">
+        <div class="modal-head">
+          <h2>Motivation Quote</h2>
+          <button class="close-btn QUOTEBtn" data-close>✕</button>
+        </div>
+        <div class="quote-card">
+          <div class="quote-text" id="quoteText">
+            Tap the button for a spark of motivation.
+          </div>
+          <div class="quote-author" id="quoteAuthor"></div>
+          <div class="quote-controls">
+            <button class="btn" id="quoteBtn">New Quote</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </main>    
   </body>
   <script src="script.js"></script>
 </html>
