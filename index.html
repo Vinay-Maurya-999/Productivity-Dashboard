@@ -91,7 +91,7 @@
             <path d="M12 9v4l3 2M9 2h6" />
           </svg>
         </div>
-        <div class="dock-item" data-panel="quote">
+        <div class="dock-item QUOTEicon" data-panel="quote">
           <span class="dock-label">Motivation Quote</span>
           <div class="led" id="ledQuote"></div>
           <svg
@@ -191,8 +191,13 @@
           <h2>Motivation Quote</h2>
           <button class="close-btn QUOTEBtn" data-close>✕</button>
         </div>
-        <div class="quote-card">
-          <div class="quote-text" id="quoteText">
+        <div style="display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;" class="quote-card">
+          <div style="font-size: 1.5rem;
+    text-align: center;" class="quote-text" id="quoteText">
             Tap the button for a spark of motivation.
           </div>
           <div class="quote-author" id="quoteAuthor"></div>

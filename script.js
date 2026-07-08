@@ -316,9 +316,31 @@ resetBtn.addEventListener("click", () => {
 });
 updateDisplay();
 
-async function h() {
-  const res = await fetch("https://api.quotable.io/random");
-  Data = res.json;
-  console.log(Data);
+let QUOTE = document.querySelector(".QUOTE");
+let QUOTEBtn = document.querySelector(".QUOTEBtn");
+let QUOTEicon = document.querySelector(".QUOTEicon");
+let quoteBtn = document.querySelector("#quoteBtn");
+
+QUOTEicon.addEventListener("click", () => {
+  QUOTE.classList.toggle("active");
+});
+QUOTEBtn.addEventListener("click", () => {
+  QUOTE.classList.toggle("active");
+});
+
+async function quote() {
+  try {
+    const res = await fetch("https://dummyjson.com/quotes/random");
+    if (!res.ok) {
+      throw new Error(`HTTP Error: ${res.status}`);
+    }
+    const data = await res.json();
+    document.querySelector("#quoteText").textContent = data.quote;
+    document.querySelector(".quote-author").textContent = data.author;
+  } catch (err) {
+    console.error(err.message);
+  }
 }
-h();
+quoteBtn.addEventListener("click", quote);
+
+quote();
